@@ -717,6 +717,7 @@ class EmulatorActivity : AppCompatActivity() {
         super.onResume()
         choreographerFrameRenderer.startRendering()
         emulatorMotionManager.resume()
+        viewModel.syncRtcOnAppResume()
 
         if (!activeOverlays.hasActiveOverlays()) {
             disableScreenTimeOut()

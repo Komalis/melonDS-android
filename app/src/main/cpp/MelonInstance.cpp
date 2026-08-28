@@ -477,6 +477,11 @@ void MelonInstance::releaseKey(u32 key)
     }
 }
 
+void MelonInstance::syncRtcToSystem()
+{
+    setDateTime();
+}
+
 int MelonInstance::readAudioOutput(s16* buffer, int length)
 {
     return nds->SPU.ReadOutput(buffer, length);
