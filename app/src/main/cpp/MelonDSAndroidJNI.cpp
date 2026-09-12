@@ -328,6 +328,7 @@ Java_me_magnum_melonds_MelonEmulator_resumeEmulation(JNIEnv* env, jobject thiz)
 
     if (!stop) {
         paused = false;
+        MelonDSAndroid::resume();
         if (started) {
             pthread_cond_broadcast(&emuThreadCond);
         }
@@ -336,8 +337,6 @@ Java_me_magnum_melonds_MelonEmulator_resumeEmulation(JNIEnv* env, jobject thiz)
     if (started) {
         pthread_mutex_unlock(&emuThreadMutex);
     }
-
-    MelonDSAndroid::resume();
 }
 
 JNIEXPORT void JNICALL
@@ -505,12 +504,6 @@ JNIEXPORT void JNICALL
 Java_me_magnum_melonds_MelonEmulator_updateMotionData(JNIEnv* env, jobject thiz, jfloat ax, jfloat ay, jfloat az, jfloat rx, jfloat ry, jfloat rz)
 {
     MelonDSAndroid::updateMotionData(ax, ay, az, rx, ry, rz);
-}
-
-JNIEXPORT void JNICALL
-Java_me_magnum_melonds_MelonEmulator_syncRtcToSystem(JNIEnv* env, jobject thiz)
-{
-    MelonDSAndroid::syncRtcToSystem();
 }
 
 JNIEXPORT jboolean JNICALL
